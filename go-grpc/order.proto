@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "go-grpc/order";
+
+message OrderDetails{
+    string name = 1;
+    string items = 2;
+    double totalPrice = 3;
+}
+
+message CreateOrderRequest{
+    OrderDetails orderDetails = 1;
+  }
+  
+message CreateOrderResponse{
+    int32 id = 1;
+    OrderDetails orderDetails = 2;
+}
+
+service Order {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+}
+
